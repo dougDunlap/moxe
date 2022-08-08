@@ -37,6 +37,17 @@ public class ProviderService {
     }
 
     /**
+     * Get providers for a hospital given hospital id
+     *
+     * @param id
+     * @return List<Provider>
+     */
+    public List<Provider> getProvidersByHospitalId(String id) {
+        final UUID hospitalId = UUID.fromString(id);
+        return providerRepository.findAllProvidersByHospitalId(hospitalId);
+    }
+
+    /**
      * Get Provider by id
      *
      * @param id
@@ -44,9 +55,6 @@ public class ProviderService {
      */
     public Provider getProviderById(String id) {
         final UUID providerId = UUID.fromString(id);
-
-        // We need to retrieve item after inserting, as returning object is not handled by
-        // creation from spring
         return providerRepository.findOneById(providerId);
     }
 
@@ -138,6 +146,9 @@ public class ProviderService {
             patientId = patientRepository.create(patient);
         }
         providerPatientRepository.create(patientId, hospitalProviderId);
+
+        // We need to retrieve item after inserting, as returning object is not handled by
+        // creation from spring
         return providerPatientRepository.findOneByPatientIdHospitalId(patientId, hospitalProviderId);
     }
 

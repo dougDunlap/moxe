@@ -64,6 +64,18 @@ public class ProviderControllerTests {
     }
 
     @Test
+    public void getProvidersByHospitalIdTest() {
+        final List<Provider> providers = controller.getProvidersByHospitalId(hospitalId);
+        assertEquals(4, providers.size());
+        Provider provider = providers.get(3);
+        assertNotNull(provider);
+        assertEquals(providerUuid, provider.getId());
+        assertEquals(firstName, provider.getFirstName());
+        assertEquals(middleName, provider.getMiddleName());
+        assertEquals(lastName, provider.getLastName());
+    }
+
+    @Test
     public void getProviderByIdTest() {
         final Provider provider = controller.getProviderById(providerId);
         assertNotNull(provider);

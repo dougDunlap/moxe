@@ -1,6 +1,7 @@
 package com.moxe.app.service;
 
 import com.moxe.app.model.Patient;
+import com.moxe.app.model.Provider;
 import com.moxe.app.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,17 @@ public class PatientService {
     }
 
     /**
+     * Get providers for a provider in a hospital given hospital provider id
+     *
+     * @param id
+     * @return List<Provider>
+     */
+    public List<Patient> getAllPatientsByHospitalProviderId(String id) {
+        final UUID hospitalProviderId = UUID.fromString(id);
+        return repository.findAllPatientsByHospitalProviderId(hospitalProviderId);
+    }
+
+    /**
      * Get Patient by id
      *
      * @param id
@@ -31,9 +43,6 @@ public class PatientService {
      */
     public Patient getPatientById(String id) {
         final UUID patientId = UUID.fromString(id);
-
-        // We need to retrieve item after inserting, as returning object is not handled by
-        // creation from spring
         return repository.findOneById(patientId);
     }
 

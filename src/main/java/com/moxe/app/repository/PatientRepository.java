@@ -1,5 +1,6 @@
 package com.moxe.app.repository;
 
+import com.moxe.app.model.Hospital;
 import com.moxe.app.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -18,6 +19,16 @@ public class PatientRepository {
     public List<Patient> findAll() {
         final BeanPropertyRowMapper patientRowMapper = new BeanPropertyRowMapper<Patient>(Patient.class);
         return jdbcTemplate.query("select * from patient", patientRowMapper, null);
+    }
+
+    public List<Patient> findAllPatientsByHospitalProviderId(UUID hospital_provider_id) {
+        // TODO : read query from file
+        String query = "select p.id, p.first_name, p.middle_name, p.last_name ";
+        query += "from provider_patient as pp, patient as p ";
+        query += "where p.id = pp.patient_id and pp.hospital_provider_id = ?";
+        final BeanPropertyRowMapper patientRowMapper = new BeanPropertyRowMapper<Patient>(Patient.class);
+        List<Patient> patients = jdbcTemplate.query(query, patientRowMapper, hospital_provider_id);
+        return patients;
     }
 
     public Patient findOneById(UUID id) {

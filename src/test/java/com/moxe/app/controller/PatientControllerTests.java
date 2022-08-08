@@ -25,6 +25,7 @@ public class PatientControllerTests {
 
     final String patientId = "82968bc2-b5a2-4528-9c52-fb612986dd52";
     final UUID patientUuid = UUID.fromString(patientId);
+    final String hospitalProviderId = "c20f0adf-953f-4f47-b930-c47cdb46fbe6";
     final String firstName = "Damien";
     final String middleName = "Robert";
     final String lastName = "Johnson";
@@ -36,6 +37,17 @@ public class PatientControllerTests {
     public void getAllPatientsTest() {
         final List<Patient> patients = controller.getAllPatients();
         assertEquals(39, patients.size());
+        Patient patient = patients.get(0);
+        assertNotNull(patient);
+        assertEquals(patientUuid, patient.getId());
+        assertEquals(firstName, patient.getFirstName());
+        assertEquals(middleName, patient.getMiddleName());
+        assertEquals(lastName, patient.getLastName());
+    }
+    @Test
+    public void getAllPatientsByHospitalProviderIdTest() {
+        final List<Patient> patients = controller.getAllPatientsByHospitalProviderId(hospitalProviderId);
+        assertEquals(4, patients.size());
         Patient patient = patients.get(0);
         assertNotNull(patient);
         assertEquals(patientUuid, patient.getId());

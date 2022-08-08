@@ -31,6 +31,11 @@ public class ProviderController {
         return service.getAllProviders();
     }
 
+    @GetMapping("/hospital/{hospitalId}/providers")
+    public List<Provider> getProvidersByHospitalId(@PathVariable String hospitalId) {
+        return service.getProvidersByHospitalId(hospitalId);
+    }
+
     @GetMapping("/provider/{id}")
     public Provider getProviderById(@PathVariable String id) {
         return service.getProviderById(id);
