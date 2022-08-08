@@ -1,0 +1,13 @@
+package com.moxe.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MoxeApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MoxeApplication.class, args);
+    }
+
+}
