@@ -5,6 +5,8 @@
 - There would be many hospitals, more providers + more patients
 - Providers could service multiple hospitals
 - Patients could see multiple providers at multiple hospitals, even the same provider at different hospitals
+- The aim from end would be to query list of hospitals which would allow selection of user displayed name associated with uuid. This would allow duplicate hospital names to appear as unique + allow discrete selection on hospital uuid.  Same with providers + patients. As there could be duplicates we want to allow selection based on uuid vs name.  Additionally providers could be filtered out based on hospital association. Patients could be filtered out independently based on hospital association, provider association or hospital + provider association.
+- I am realizing ideally we would have one more api endpoint each for patient + provider to more easily synthesize this information.  We really not want to leave to front end.
 
 ### ER Diagram
 
