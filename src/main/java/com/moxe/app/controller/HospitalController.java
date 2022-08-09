@@ -30,7 +30,7 @@ public class HospitalController {
         return service.getHospitalById(id);
     }
 
-    @GetMapping("/hospital/{name}")
+    @GetMapping("/hospital/name/{name}")
     public Hospital getHospitalByName(@PathVariable String name) {
         return service.getHospitalByName(name);
     }
