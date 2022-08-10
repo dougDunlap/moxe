@@ -31,17 +31,20 @@ Going forward we would need to be safter about database interactions. For exampl
 
 ### Operation
 
-Get hosital details by name:
+Get hosital details by name :
 `GET /hospital/name/{name}`
 
-Get providers by hospital id:
+Get providers by hospital id :
 `GET /hospital/{hospitalId}/providers`
 
-Get hospital provider by provider id:
+Get hospital provider by provider id :
 `GET /hospital/{hospitalId}/providers`
 
 Get hosptial providers by hospital id ( as hospital provider id will differ from provider id ) :
 `GET /hospital/{hospitalId}/hospitalProvider`
 
-Get patients by hospital id and provider id:
-`GET hospitalProvider/{hospitalProviderId}/patient`
+Get patients by hospital id and provider id :
+`GET /hospitalProvider/{hospitalProviderId}/patient`
+
+Update patient with new patient object :
+`PUT /patient`
