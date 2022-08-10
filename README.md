@@ -5,6 +5,9 @@
 - There would be many hospitals, more providers + more patients
 - Providers could service multiple hospitals
 - Patients could see multiple providers at multiple hospitals, even the same provider at different hospitals
+- Hospital name is unique
+- Patient name is not unique.  Patients can share the same name.
+- Provider name is not unique   Providers can share the same name.
 
 ### ER Diagram
 
@@ -21,3 +24,24 @@ Testing was done at Controller level to both verify all endpoints were working a
 H2 was used for speed + portability. Ultimately database use would need some thought about which database type to use, when + where.
 
 Going forward we would need to be safter about database interactions. For example we would need to identify + handle exceptions better.  As an extension exceptions overall would need to be handled; retried, aborted or alerted.
+
+### Install
+
+`mvn clean install` - This will also run test coverage
+
+### Operation
+
+Get hosital details by name:
+`GET /hospital/name/{name}`
+
+Get providers by hospital id:
+`GET /hospital/{hospitalId}/providers`
+
+Get hospital provider by provider id:
+`GET /hospital/{hospitalId}/providers`
+
+Get hosptial providers by hospital id ( as hospital provider id will differ from provider id ) :
+`GET /hospital/{hospitalId}/hospitalProvider`
+
+Get patients by hospital id and provider id:
+`GET hospitalProvider/{hospitalProviderId}/patient`

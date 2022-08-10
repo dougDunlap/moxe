@@ -113,6 +113,17 @@ public class ProviderControllerTests {
     }
 
     @Test
+    public void getAllHospitalProvidersByHospitalIdTest() {
+        final List<HospitalProvider> hospitalProviders = controller.getAllHospitalProvidersByHospitalId(hospitalId);
+        assertEquals(4, hospitalProviders.size());
+        HospitalProvider hospitalProvider = hospitalProviders.get(0);
+        assertNotNull(hospitalProvider);
+        assertEquals(hospitalProviderUuid, hospitalProvider.getId());
+        assertEquals(hospitalUuid, hospitalProvider.getHospitalId());
+        assertEquals(providerUuid, hospitalProvider.getProviderId());
+    }
+
+    @Test
     public void getAllHospitalProviderByIdTest() {
         final HospitalProvider hospitalProvider = controller.getHospitalProviderById(hospitalProviderId);
         assertNotNull(hospitalProvider);

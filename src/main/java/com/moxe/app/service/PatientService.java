@@ -25,10 +25,10 @@ public class PatientService {
     }
 
     /**
-     * Get providers for a provider in a hospital given hospital provider id
+     * Get all patients given hospital provider id
      *
      * @param id
-     * @return List<Provider>
+     * @return List<Patient>
      */
     public List<Patient> getAllPatientsByHospitalProviderId(String id) {
         final UUID hospitalProviderId = UUID.fromString(id);

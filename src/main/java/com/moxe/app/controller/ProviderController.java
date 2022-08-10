@@ -51,6 +51,11 @@ public class ProviderController {
         return service.getAllHospitalProviders();
     }
 
+    @GetMapping("/hospital/{hospitalId}/hospitalProvider")
+    public List<HospitalProvider> getAllHospitalProvidersByHospitalId(@PathVariable String hospitalId) {
+        return service.getAllHospitalProvidersByHospitalId(hospitalId);
+    }
+
     @GetMapping("/hospitalProvider/{id}")
     public HospitalProvider getHospitalProviderById(@PathVariable String id) {
         return service.getHospitalProviderById(id);

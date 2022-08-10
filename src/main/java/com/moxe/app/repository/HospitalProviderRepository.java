@@ -20,6 +20,13 @@ public class HospitalProviderRepository {
         return jdbcTemplate.query("select * from hospital_provider", hospitalProviderRowMapper, null);
     }
 
+    public List<HospitalProvider> findAllHospitaLProvidersByHospitalId(UUID hospitalId) {
+        String query = "select * from hospital_provider where hospital_id = ?";
+        final BeanPropertyRowMapper hospitalProviderRowMapper =
+                new BeanPropertyRowMapper<HospitalProvider>(HospitalProvider.class);
+        return jdbcTemplate.query(query, hospitalProviderRowMapper, hospitalId);
+    }
+
     public HospitalProvider findOneById(UUID id) {
         final BeanPropertyRowMapper hospitalProviderRowMapper = new BeanPropertyRowMapper<HospitalProvider>(HospitalProvider.class);
         final List<HospitalProvider> hospitalProviders = jdbcTemplate.query("select * from hospital_provider where id = ?", hospitalProviderRowMapper, id);

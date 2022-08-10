@@ -72,11 +72,22 @@ public class ProviderService {
     }
 
     /**
-     * get Hospital Provider details for a given hospital
+     * Get all Hospital Providers for a given hospital
      * @return List<HospitalProvider>
      */
     public List<HospitalProvider> getAllHospitalProviders() {
         return hospitalProviderRepository.findAll();
+    }
+
+    /**
+     * Get all Hospital Providers by hosital id
+     *
+     * @param id
+     * @return List<HospitalProvider>
+     */
+    public List<HospitalProvider> getAllHospitalProvidersByHospitalId(String id) {
+        final UUID hospitalId = UUID.fromString(id);
+        return hospitalProviderRepository.findAllHospitaLProvidersByHospitalId(hospitalId);
     }
 
     /**
